@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA MARKET</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+
+        <div class="logo">
+            NEXORA <span>MARKET</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#inventory">Inventory</a>
+            <a href="#billing">Billing</a>
+            <a href="#customers">Customers</a>
+            <a href="#payments">Payments</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#predictions">Predictions</a>
+            <a href="#market-basket">Market Basket</a>
+            <a href="#schemes">Schemes</a>
+            <a href="#reports">Reports</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to <span>NEXORA MARKET</span>
+            </h1>
+
+            <p>
+                Smart Business Management for Retail and Wholesale
+                Businesses. Manage inventory, billing, customers,
+                payments and business decisions with data-driven
+                intelligence.
+            </p>
+
+            <a href="#dashboard" class="btn btn-primary">
+                Explore Dashboard
+            </a>
+
+            <a href="#analytics" class="btn btn-secondary">
+                Explore Analytics
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="container">
+
+        <h2 class="section-title">
+            Everything Your Business Needs
+        </h2>
+
+        <div class="cards">
+
+            <div class="card" onclick="window.location.href='inventory.html'">
+
+    <div class="card-icon">📦</div>
+
+    <h3>Inventory</h3>
+
+    <p>
+        Manage products, stock levels and storage efficiently.
+    </p>
+
+</div>
+
+            <div class="card" onclick="window.location.href='billing.html'">
+                <div class="card-icon">🧾</div>
+                <h3>Smart Billing</h3>
+                <p>
+                    Manage online and offline billing for retail and
+                    wholesale businesses.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Customers</h3>
+                <p>
+                    Maintain customer profiles and purchase history.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Smart Analytics</h3>
+                <p>
+                    Use historical data for prediction and better
+                    business decisions.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard-section" id="dashboard">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Business Dashboard
+            </h2>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h4>Today's Sales</h4>
+                    <h2>₹24,560</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Total Products</h4>
+                    <h2>1,245</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Pay Later</h4>
+                    <h2>₹18,400</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Total Customers</h4>
+                    <h2>1,254</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INVENTORY -->
+
+    <section class="container" id="inventory">
+
+        <h2 class="section-title">
+            📦 Inventory Management
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">📷</div>
+                <h3>Add Inventory by Photo</h3>
+                <p>
+                    Upload or capture a product photo to quickly
+                    add products to inventory.
+                </p>
+                <button class="btn btn-primary">
+                    Add Product Photo
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⚠️</div>
+                <h3>Low Stock Alert</h3>
+                <p>
+                    18 products are currently running low on stock.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🗄️</div>
+                <h3>Storage Management</h3>
+                <p>
+                    Track products across different storage locations.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BILLING -->
+
+    <section class="dashboard-section" id="billing">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                🧾 Billing Management
+            </h2>
+
+            <div class="cards">
+
+                <div class="card" onclick="openBilling()">
+    <div class="card-icon">🌐</div>
+    <h3>Online Billing</h3>
+    <p>
+        Create and manage digital bills quickly.
+    </p>
+</div>
+
+                <div class="card" onclick="window.location.href='inventory.html'">
+                    <div class="card-icon">📴</div>
+                    <h3>Offline Billing</h3>
+                    <p>
+                        Continue billing even without an internet
+                        connection.
+                    </p>
+                </div>
+
+                <div class="card" onclick="window.location.href='inventory.html'">
+                    <div class="card-icon">🏪</div>
+                    <h3>Retail & Wholesale</h3>
+                    <p>
+                        Support both retail and wholesale business models.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMERS -->
+
+   <!-- CUSTOMERS -->
+
+<section class="container" id="customers">
+
+    <h2 class="section-title">
+        👥 Customer History
+    </h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Mobile</th>
+
+                    <th>Last Purchase</th>
+
+                    <th>Total Purchase</th>
+
+                    <th>Pay Later</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="customerHistoryTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+    <!-- PAYMENTS -->
+
+    <section class="dashboard-section" id="payments">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                💳 Pay Later Management
+            </h2>
+
+            <div class="cards">
+
+                <div class="card" onclick="window.location.href='inventory.html'">
+                    <div class="card-icon">💰</div>
+                    <h3>Total Pending</h3>
+                    <p>
+                        ₹18,400 is currently pending from customers.
+                    </p>
+                </div>
+
+                <div class="card" onclick="window.location.href='inventory.html'">
+                    <div class="card-icon">👤</div>
+                    <h3>Pending Customers</h3>
+                    <p>
+                        12 customers currently have pending payments.
+                    </p>
+                </div>
+
+                <div class="card" onclick="window.location.href='inventory.html'">
+                    <div class="card-icon">🔔</div>
+                    <h3>Payment Reminder</h3>
+                    <p>
+                        Send reminders to customers with pending payments.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYTICS -->
+
+    <section class="container" id="analytics">
+
+        <h2 class="section-title">
+            📊 Business Analytics
+        </h2>
+
+        <div class="analytics-grid">
+
+            <div class="analytics-card">
+
+                <h3>📈 Sales Analytics</h3>
+
+                <p>
+                    Analyze historical sales and identify business trends.
+                </p>
+
+                <div class="highlight">
+                    Total Sales Growth:
+                    <strong>18.5%</strong>
+                </div>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <h3>📦 Inventory Analytics</h3>
+
+                <p>
+                    Identify fast-moving and slow-moving products.
+                </p>
+
+                <div class="highlight">
+                    Fast Moving Product:
+                    <strong>Milk</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PREDICTIONS -->
+
+    <section class="dashboard-section" id="predictions">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                🔮 Future Predictions
+            </h2>
+
+            <div class="analytics-grid">
+
+                <div class="analytics-card">
+
+                    <h3>Sales Prediction</h3>
+
+                    <p>
+                        Based on previous sales data, the system
+                        predicts future demand.
+                    </p>
+
+                    <div class="highlight">
+                        Expected sales next week:
+                        <strong>₹1,85,000</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <h3>Stock Prediction</h3>
+
+                    <p>
+                        Predict which products may require restocking.
+                    </p>
+
+                    <div class="highlight">
+                        ⚠️ Milk may become low in
+                        <strong>3 days.</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MARKET BASKET -->
+
+    <section class="container" id="market-basket">
+
+        <h2 class="section-title">
+            🛒 Market Basket Analysis
+        </h2>
+
+        <div class="basket-box">
+
+            <div class="product-pair">
+
+                <h3>🥖 Bread + 🧈 Butter</h3>
+
+                <p>
+                    Frequently purchased together
+                </p>
+
+                <div class="confidence">
+                    Confidence: 78%
+                </div>
+
+            </div>
+
+
+            <div class="product-pair">
+
+                <h3>🥛 Milk + 🍪 Biscuits</h3>
+
+                <p>
+                    Strong customer association
+                </p>
+
+                <div class="confidence">
+                    Confidence: 72%
+                </div>
+
+            </div>
+
+
+            <div class="product-pair">
+
+                <h3>🍚 Rice + 🫘 Dal</h3>
+
+                <p>
+                    Commonly purchased together
+                </p>
+
+                <div class="confidence">
+                    Confidence: 69%
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="market-basket-controls">
+
+    <label>
+        Minimum Support (%)
+    </label>
+
+    <input
+        type="number"
+        id="minSupport"
+        value="10"
+        min="1"
+        max="100"
+    >
+
+
+    <label>
+        Minimum Confidence (%)
+    </label>
+
+    <input
+        type="number"
+        id="minConfidence"
+        value="50"
+        min="1"
+        max="100"
+    >
+
+
+    <button onclick="runMarketBasket()">
+        🛒 Run FP-Growth
+    </button>
+
+</div>
+<div id="marketBasketResults" class="market-basket-results">
+
+    <p>
+        Click <strong>Run FP-Growth</strong> to see real customer buying patterns.
+    </p>
+
+</div>
+
+
+    <!-- SCHEMES -->
+
+    <section class="dashboard-section" id="schemes">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                🏷️ Schemes & Notifications
+            </h2>
+
+            <div class="notifications">
+
+                <div class="notification">
+
+                    <h3>🎁 Combo Offer</h3>
+
+                    <p>
+                        Bread + Butter combo with 10% discount.
+                    </p>
+
+                </div>
+
+
+                <div class="notification">
+
+                    <h3>⚠️ Stock Alert</h3>
+
+                    <p>
+                        Milk stock may become low in the next 3 days.
+                    </p>
+
+                </div>
+
+
+                <div class="notification">
+
+                    <h3>💳 Payment Reminder</h3>
+
+                    <p>
+                        12 customers have pending payments.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REPORTS -->
+
+    <section class="container" id="reports">
+
+        <h2 class="section-title">
+            📋 Business Reports
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Sales Report</h3>
+                <p>
+                    View daily, weekly and monthly sales.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📦</div>
+                <h3>Inventory Report</h3>
+                <p>
+                    Track stock movement and inventory levels.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Customer Report</h3>
+                <p>
+                    Understand customer purchases and behaviour.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Payment Report</h3>
+                <p>
+                    View completed and pending payments.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>
+            Make Your Business Smarter
+        </h2>
+
+        <p>
+            Manage • Analyze • Predict • Grow
+        </p>
+
+        <a href="#dashboard" class="btn btn-primary">
+            View Dashboard
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            <strong>NEXORA MARKET</strong>
+        </p>
+
+        <p>
+            Smart Business Management
+        </p>
+
+        <p>
+            Billing • Inventory • Analytics • Prediction
+        </p>
+
+    </footer>
+
+</body>
+<script src="script.js"></script>
+</body>
+</html>

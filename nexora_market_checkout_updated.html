@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexora Market - Smart Billing</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 18px 35px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .back-btn {
+            background: #38bdf8;
+            color: white;
+            text-decoration: none;
+
+            padding: 9px 18px;
+            border-radius: 7px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .billing-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+        }
+
+        .billing-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+
+            font-size: 14px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .add-btn {
+            margin-top: 18px;
+
+            background: #0284c7;
+            color: white;
+
+            border: none;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+        }
+
+        .add-btn:hover {
+            background: #0369a1;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+
+            border-bottom: 1px solid #e2e8f0;
+
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        .remove-btn {
+            background: #ef4444;
+            color: white;
+
+            border: none;
+
+            padding: 6px 10px;
+
+            border-radius: 5px;
+        }
+
+        .total-box {
+            text-align: right;
+
+            margin-top: 20px;
+
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .payment-section {
+            margin-top: 20px;
+        }
+
+        .generate-btn {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 14px;
+
+            background: #0f172a;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+        }
+
+        .generate-btn:hover {
+            background: #1e293b;
+        }
+
+        .empty {
+            text-align: center;
+
+            padding: 25px;
+
+            color: #64748b;
+        }
+
+        @media (max-width: 700px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* Nexora Market checkout redesign */
+        :root {
+            --nexora-black: #171717;
+            --nexora-black-deep: #101010;
+            --nexora-gold: #d4af37;
+            --nexora-gold-dark: #b8941f;
+            --nexora-text: #1f2937;
+            --nexora-muted: #64748b;
+            --nexora-line: #e2e8f0;
+        }
+        body { background: #eef1f5; color: var(--nexora-text); }
+        header { background: var(--nexora-black-deep); border-bottom: 2px solid var(--nexora-gold); }
+        .logo span { color: var(--nexora-gold); }
+        .back-btn { background: var(--nexora-gold); color: var(--nexora-black); font-weight: 700; }
+        .back-btn:hover { background: #e4c65b; }
+        .billing-box {
+            border: 1px solid #e3e6eb;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .07);
+        }
+        .billing-box h2 { color: var(--nexora-black); }
+        .add-btn { background: var(--nexora-black); color: var(--nexora-gold); border: 1px solid var(--nexora-gold); font-weight: 700; }
+        .add-btn:hover { background: #303030; }
+        th { background: #f4f1e7; color: #292929; }
+        .generate-btn { background: var(--nexora-gold); color: var(--nexora-black); font-weight: 800; }
+        .generate-btn:hover { background: #e4c65b; }
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(280px, .9fr);
+            align-items: start;
+            gap: 22px;
+            margin-bottom: 25px;
+        }
+        .checkout-grid .billing-box { margin-bottom: 0; min-width: 0; }
+        .order-summary h2, .payment-options h2 { display: flex; align-items: center; gap: 9px; }
+        .section-kicker {
+            color: var(--nexora-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .checkout-customer {
+            background: #f8fafc;
+            border: 1px solid var(--nexora-line);
+            border-radius: 9px;
+            padding: 12px 14px;
+            margin-bottom: 17px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+        .checkout-customer strong { color: #111827; }
+        .order-summary table { min-width: 540px; }
+        .order-summary th, .order-summary td { padding: 11px 10px; }
+        .checkout-total {
+            margin-top: 16px;
+            background: var(--nexora-black);
+            color: white;
+            border-radius: 10px;
+            padding: 17px;
+        }
+        .checkout-total .total-label { color: #d1d5db; font-size: 13px; margin-bottom: 5px; }
+        .checkout-total .total-value { color: var(--nexora-gold); font-size: 30px; font-weight: 800; }
+        .payment-options { background: #fff; }
+        .payable-card {
+            border: 1px solid #e8dfc1;
+            background: #fcfaf3;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            margin: 12px 0 15px;
+        }
+        .payable-label { color: #6b7280; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+        .payable-value { color: var(--nexora-black); font-size: 30px; font-weight: 800; margin-top: 5px; }
+        .qr-placeholder {
+            border: 1px solid #d7dce3;
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            margin: 0 auto 16px;
+            max-width: 230px;
+            background: #fff;
+        }
+        .qr-icon {
+            width: 112px;
+            height: 112px;
+            margin: 0 auto 10px;
+            display: grid;
+            place-items: center;
+            border: 5px solid #f1f2f4;
+            background:
+                repeating-linear-gradient(0deg, #171717 0 4px, #fff 4px 8px),
+                repeating-linear-gradient(90deg, transparent 0 4px, #fff 4px 8px);
+            background-blend-mode: screen;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            text-shadow: 0 1px 3px #000;
+        }
+        .qr-placeholder strong { display: block; font-size: 14px; margin-bottom: 4px; }
+        .qr-placeholder small { color: var(--nexora-muted); line-height: 1.4; display: block; }
+        .qr-warning { color: #9a6700; font-size: 11px; margin-top: 8px; }
+        .payment-fields { display: grid; gap: 13px; }
+        .payment-fields label { margin-bottom: 6px; }
+        .payment-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 18px; }
+        .payment-actions button, .secondary-action {
+            border-radius: 7px; padding: 11px 12px; font-weight: 700; border: 1px solid transparent;
+        }
+        .confirm-payment { background: var(--nexora-black); color: var(--nexora-gold); border-color: var(--nexora-gold) !important; }
+        .confirm-payment:hover { background: #303030; }
+        .secondary-action { background: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+        .bill-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+        .bill-tools button { background: white; color: var(--nexora-black); border: 1px solid #d1d5db; border-radius: 7px; padding: 10px 8px; font-weight: 700; }
+        .bill-tools button:hover { border-color: var(--nexora-gold-dark); background: #fcfaf3; }
+        .status-note { margin-top: 12px; font-size: 12px; color: var(--nexora-muted); line-height: 1.5; }
+        @media (max-width: 850px) {
+            .checkout-grid { grid-template-columns: 1fr; }
+            .checkout-grid .billing-box { width: 100%; }
+        }
+        @media (max-width: 520px) {
+            header { padding: 16px; }
+            .logo { font-size: 20px; }
+            .container { margin: 22px auto; padding: 0 12px; }
+            .billing-box { padding: 16px; }
+            .payment-actions { grid-template-columns: 1fr; }
+            .bill-tools { grid-template-columns: 1fr; }
+            .payable-value { font-size: 26px; }
+        }
+        @media print {
+            header, .container > h1, .container > .subtitle, .billing-box:not(.printable) { display: none !important; }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            NEXORA <span>MARKET</span>
+        </div>
+
+        <a href="index.html" class="back-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <div class="container">
+
+
+        <h1>
+            Smart Billing
+        </h1>
+
+        <p class="subtitle">
+            Create and manage customer bills.
+        </p>
+
+
+        <!-- CUSTOMER -->
+
+        <div class="billing-box">
+
+    <h2>
+        Customer Details
+    </h2>
+
+    <div class="form-grid">
+
+        <!-- PREVIOUS CUSTOMER -->
+
+        <div>
+
+            <label>
+                Previous Customer
+            </label>
+
+            <select
+                id="previousCustomer"
+                onchange="selectPreviousCustomer()"
+            >
+
+                <option value="">
+                    -- Select Previous Customer --
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CUSTOMER NAME -->
+
+        <div>
+
+            <label>
+                Customer Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter customer name"
+                required
+            >
+
+        </div>
+
+
+        <!-- CUSTOMER MOBILE -->
+
+        <div>
+
+            <label>
+                Customer Mobile
+            </label>
+
+            <input
+                type="tel"
+                id="customerMobile"
+                placeholder="Enter mobile number"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+        <!-- ADD PRODUCT -->
+
+        <div class="billing-box">
+
+            <h2>
+                Add Product
+            </h2>
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+    Quantity
+</label>
+
+<div style="display: flex; gap: 8px;">
+
+    <input
+        type="number"
+        id="quantity"
+        placeholder="Enter quantity"
+        min="0.001"
+        step="0.001"
+        value="1"
+        style="flex: 1;"
+    >
+
+    <select
+        id="quantityUnit"
+        style="width: 130px;"
+    >
+
+        <option value="Piece">Piece</option>
+        <option value="Kg">Kg</option>
+        <option value="Gram">Gram</option>
+        <option value="Litre">Litre</option>
+        <option value="Millilitre">ml</option>
+        <option value="Packet">Packet</option>
+        <option value="Box">Box</option>
+        <option value="Bottle">Bottle</option>
+        <option value="Dozen">Dozen</option>
+
+    </select>
+
+</div>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Selling Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        min="0"
+                        step="0.01"
+                        placeholder="Enter price"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="addItem()"
+            >
+                + Add Product
+            </button>
+
+        </div>
+
+
+        <!-- CHECKOUT: order summary + payment options -->
+        <div class="checkout-grid">
+            <section class="billing-box order-summary">
+                <h2>Retail Checkout</h2>
+                <div class="checkout-customer">
+                    <div><strong>Customer:</strong> <span id="checkoutCustomer">Not selected</span></div>
+                    <div><strong>Mobile:</strong> <span id="checkoutMobile">Not provided</span></div>
+                    <div class="section-kicker" style="margin-top:8px;margin-bottom:0;">Order Summary</div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Unit Price</th>
+                                <th>Subtotal</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="billTable"></tbody>
+                    </table>
+                </div>
+                <div id="emptyBillMessage" class="empty">Add products above to see your order summary.</div>
+                <div class="checkout-total">
+                    <div class="total-label">GRAND TOTAL</div>
+                    <div class="total-value" id="totalAmount">₹0.00</div>
+                </div>
+                <div class="bill-tools">
+                    <button type="button" onclick="printCurrentBill()">Print Bill</button>
+                    <button type="button" onclick="downloadBillPDF()">Download PDF</button>
+                    <button type="button" onclick="resetNewBill()">New Bill</button>
+                </div>
+            </section>
+
+            <aside class="billing-box payment-options">
+                <h2>Payment Options</h2>
+                <div class="payable-card">
+                    <div class="payable-label">TOTAL PAYABLE</div>
+                    <div class="payable-value" id="paymentTotal">₹0.00</div>
+                    <div class="status-note">Final amount for this order</div>
+                </div>
+                <div class="qr-placeholder">
+                    <div class="qr-icon" aria-hidden="true">UPI</div>
+                    <strong>UPI / QR Payment</strong>
+                    <small>Replace this placeholder with your actual merchant UPI QR code before accepting payments.</small>
+                    <div class="qr-warning">This is a design placeholder, not a working payment QR.</div>
+                </div>
+                <div class="payment-fields">
+                    <div>
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod">
+                            <option value="Cash">Cash</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Card">Card</option>
+                            <option value="Net Banking">Net Banking</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="paymentType">Payment Status</label>
+                        <select id="paymentType">
+                            <option value="Paid">Paid</option>
+                            <option value="Pay Later">Unpaid / Pay Later</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="payment-actions">
+                    <button id="generateBill" class="confirm-payment" type="button" onclick="generateBill()">Confirm Payment</button>
+                    <button class="secondary-action" type="button" onclick="resetNewBill()">New / Back</button>
+                </div>
+                <p class="status-note">Confirm Payment saves the bill to your existing bill history. Cash, card and UPI selections are recorded; this page does not process online payments.</p>
+            </aside>
+        </div>
+
+    </div>
+
+    <div class="billing-box">
+    <h2>Bill History</h2>
+
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Bill ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="billHistoryTable">
+                <tr>
+                    <td colspan="5">Loading bills...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <script>
+        function loadBillHistory() {
+
+    const billHistoryTable = document.getElementById("billHistoryTable");
+
+    const bills = JSON.parse(localStorage.getItem("bills")) || [];
+
+    billHistoryTable.innerHTML = "";
+
+    if (bills.length === 0) {
+        billHistoryTable.innerHTML = `
+            <tr>
+                <td colspan="5">No bills generated yet.</td>
+            </tr>
+        `;
+        return;
+    }
+
+    bills.slice().reverse().forEach(function (bill) {
+
+    const row = document.createElement("tr");
+
+    const values = [
+        bill.billID,
+        bill.customer,
+        bill.date,
+        "₹" + Number(bill.total).toFixed(2),
+        bill.paymentType
+    ];
+
+    values.forEach(function (value) {
+
+        const cell = document.createElement("td");
+        cell.textContent = value ?? "";
+        row.appendChild(cell);
+
+    });
+
+    const actionCell = document.createElement("td");
+
+    const viewButton = document.createElement("button");
+    viewButton.textContent = "View Bill";
+    viewButton.style.marginRight = "5px";
+    viewButton.onclick = function () {
+        viewBill(bill);
+    };
+
+    const printButton = document.createElement("button");
+    printButton.textContent = "Print";
+    printButton.onclick = function () {
+        printBill(bill);
+    };
+
+    actionCell.appendChild(viewButton);
+    actionCell.appendChild(printButton);
+
+    row.appendChild(actionCell);
+
+    billHistoryTable.appendChild(row);
+
+});
+
+}
+
+loadBillHistory();
+
+        // Current bill items
+
+        let billItems = [];
+        window.addEventListener("DOMContentLoaded", updateCheckoutCustomer);
+
+
+        // --------------------------------------
+        // ADD ITEM
+        // --------------------------------------
+
+        window.addItem = function() {
+
+            const product =
+                document
+                .getElementById("productName")
+                .value
+                .trim();
+
+
+            const quantity =
+                Number(
+                    document
+                    .getElementById("quantity")
+                    .value
+                );
+
+
+            const price =
+                Number(
+                    document
+                    .getElementById("price")
+                    .value
+                );
+
+
+            if (product === "") {
+    alert("Enter product name.");
+    return;
+}
+
+
+
+            if (quantity <= 0) {
+
+                alert("Enter valid quantity.");
+
+                return;
+
+            }
+
+
+            if (price <= 0) {
+
+                alert("Enter valid price.");
+
+                return;
+
+            }
+
+
+            const unit = document.getElementById("quantityUnit").value;
+            const amount = quantity * price;
+
+
+            billItems.push({
+
+                product: product,
+
+                quantity: quantity,
+                unit: unit,
+                price: price,
+                amount: amount
+
+            });
+
+
+            displayBill();
+
+
+            // Clear fields
+
+            document
+                .getElementById("productName")
+                .value = "";
+
+
+            document
+                .getElementById("quantity")
+                .value = 1;
+
+
+            document
+                .getElementById("price")
+                .value = "";
+
+        }
+
+
+        // --------------------------------------
+        // DISPLAY BILL
+        // --------------------------------------
+
+        function displayBill() {
+
+            const table =
+                document.getElementById("billTable");
+
+
+            table.innerHTML = "";
+
+
+            let total = 0;
+
+
+            billItems.forEach(function(item, index) {
+
+                total += item.amount;
+
+
+                const row =
+                    document.createElement("tr");
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${item.product}
+                    </td>
+
+                    <td>
+                        ${item.quantity} ${item.unit || "Piece"}
+                    </td>
+
+                    <td>
+                        ₹${item.price.toFixed(2)}
+                    </td>
+
+                    <td>
+                        ₹${item.amount.toFixed(2)}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeItem(${index})"
+                        >
+                            Remove
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                table.appendChild(row);
+
+            });
+
+
+            document.getElementById("totalAmount").innerText = "₹" + total.toFixed(2);
+            const paymentTotal = document.getElementById("paymentTotal");
+            if (paymentTotal) paymentTotal.innerText = "₹" + total.toFixed(2);
+            const emptyMessage = document.getElementById("emptyBillMessage");
+            if (emptyMessage) emptyMessage.style.display = billItems.length ? "none" : "block";
+            updateCheckoutCustomer();
+
+        }
+
+
+        // --------------------------------------
+        // REMOVE ITEM
+        // --------------------------------------
+
+        function removeItem(index) {
+
+            billItems.splice(index, 1);
+
+            displayBill();
+
+        }
+
+
+        function updateCheckoutCustomer() {
+            const customerName = document.getElementById("customerName");
+            const customerMobile = document.getElementById("customerMobile");
+            const checkoutCustomer = document.getElementById("checkoutCustomer");
+            const checkoutMobile = document.getElementById("checkoutMobile");
+            if (checkoutCustomer) checkoutCustomer.textContent = customerName && customerName.value.trim() ? customerName.value.trim() : "Not selected";
+            if (checkoutMobile) checkoutMobile.textContent = customerMobile && customerMobile.value.trim() ? customerMobile.value.trim() : "Not provided";
+        }
+
+        ["customerName", "customerMobile"].forEach(function(id) {
+            const field = document.getElementById(id);
+            if (field) field.addEventListener("input", updateCheckoutCustomer);
+        });
+
+        window.resetNewBill = function() {
+            if (billItems.length && !confirm("Clear the current unsaved bill and start a new one?")) return;
+            billItems = [];
+            displayBill();
+            ["customerName", "customerMobile", "productName", "price"].forEach(function(id) {
+                const field = document.getElementById(id);
+                if (field) field.value = "";
+            });
+            const quantity = document.getElementById("quantity");
+            if (quantity) quantity.value = "1";
+            const unit = document.getElementById("quantityUnit");
+            if (unit) unit.value = "Piece";
+            const paymentMethod = document.getElementById("paymentMethod");
+            if (paymentMethod) paymentMethod.value = "Cash";
+            const paymentType = document.getElementById("paymentType");
+            if (paymentType) paymentType.value = "Paid";
+            updateCheckoutCustomer();
+        };
+
+        function makeCurrentDraftBill() {
+            const customerField = document.getElementById("customerName");
+            const mobileField = document.getElementById("customerMobile");
+            const paymentTypeField = document.getElementById("paymentType");
+            const paymentMethodField = document.getElementById("paymentMethod");
+            return {
+                billID: "DRAFT",
+                customer: customerField && customerField.value.trim() ? customerField.value.trim() : "Walk-in Customer",
+                mobile: mobileField ? mobileField.value.trim() : "",
+                date: new Date().toLocaleString("en-IN"),
+                items: billItems.map(function(item) { return Object.assign({}, item); }),
+                total: billItems.reduce(function(sum, item) { return sum + Number(item.amount || 0); }, 0),
+                paymentType: paymentTypeField ? paymentTypeField.value : "Paid",
+                paymentMethod: paymentMethodField ? paymentMethodField.value : "Cash"
+            };
+        }
+
+        window.printCurrentBill = function() {
+            if (!billItems.length) { alert("Add at least one product before printing."); return; }
+            printBill(makeCurrentDraftBill());
+        };
+
+        window.downloadBillPDF = function() {
+            if (!billItems.length) { alert("Add at least one product before downloading the bill."); return; }
+            alert("In the print dialog, choose 'Save as PDF' as the printer destination.");
+            printBill(makeCurrentDraftBill());
+        };
+
+        // --------------------------------------
+        // GENERATE BILL
+        // --------------------------------------
+
+        function generateBill() {
+
+            const customer =
+                document
+                .getElementById("customerName")
+                .value
+                .trim();
+
+
+            const mobile =
+                document
+                .getElementById("customerMobile")
+                .value
+                .trim();
+
+
+            const payment =
+                document
+                .getElementById("paymentType")
+                .value;
+
+
+            if (customer === "") {
+
+                alert("Enter customer name.");
+
+                return;
+
+            }
+
+
+            if (billItems.length === 0) {
+
+                alert("Add at least one product.");
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+
+            billItems.forEach(function(item) {
+
+                total += item.amount;
+
+            });
+
+
+            const billID =
+                "B" +
+                Date.now()
+                .toString()
+                .slice(-6);
+
+
+            const bill = {
+
+                billID: billID,
+
+                customer: customer,
+
+                mobile: mobile,
+
+                date:
+                    new Date()
+                    .toLocaleString("en-IN"),
+
+                items: billItems,
+
+                total: total,
+
+                paymentType: payment,
+                paymentMethod: document.getElementById("paymentMethod").value
+
+            };
+
+
+            // --------------------------------------
+// SAVE CUSTOMER SEPARATELY
+// --------------------------------------
+
+let customers =
+    JSON.parse(
+        localStorage.getItem("customers")
+    ) || [];
+
+// Check whether customer already exists
+const existingCustomer =
+    customers.find(function(existing) {
+
+        return existing.mobile === mobile &&
+               mobile !== "";
+
+    });
+
+// Save only new customer
+if (!existingCustomer) {
+
+    const newCustomer = {
+
+        customerID:
+            "C" +
+            Date.now()
+            .toString()
+            .slice(-6),
+
+        name: customer,
+
+        mobile: mobile,
+
+        dateAdded:
+            new Date()
+            .toLocaleString("en-IN")
+
+    };
+
+    customers.push(newCustomer);
+
+    localStorage.setItem(
+        "customers",
+        JSON.stringify(customers)
+    );
+
+}
+
+
+            // Get previous bills
+
+            let bills =
+                JSON.parse(
+                    localStorage.getItem("bills")
+                ) || [];
+
+
+            // Save bill
+
+            bills.push(bill);
+
+
+            localStorage.setItem(
+                "bills",
+                JSON.stringify(bills)
+            );
+            loadBillHistory();
+
+            alert(
+
+                "Bill Generated Successfully!\n\n" +
+
+                "Bill ID: " +
+                billID +
+
+                "\nCustomer: " +
+                customer +
+
+                "\nTotal: ₹" +
+                total.toFixed(2) +
+
+                "\nPayment: " +
+                payment
+
+            );
+
+
+            console.log(
+                "New Bill:",
+                bill
+            );
+
+
+            // Reset
+
+            billItems = [];
+
+            displayBill();
+
+
+            document
+                .getElementById("customerName")
+                .value = "";
+
+
+            document
+                .getElementById("customerMobile")
+                .value = "";
+
+        }
+
+        window.viewBill = function(bill) {
+
+    let details = "NEXORA MARKET\n";
+    details += "----------------------\n";
+    details += "Bill ID: " + bill.billID + "\n";
+    details += "Customer: " + bill.customer + "\n";
+    details += "Mobile: " + (bill.mobile || "N/A") + "\n";
+    details += "Date: " + bill.date + "\n";
+    details += "----------------------\n";
+
+    (bill.items || []).forEach(function(item) {
+
+        details += item.product + "\n";
+        details += "Quantity: " + item.quantity + " " + (item.unit || "") + "\n";
+        details += "Price: ₹" + Number(item.price).toFixed(2) + "\n";
+        details += "Amount: ₹" + Number(item.amount).toFixed(2) + "\n\n";
+
+    });
+
+    details += "----------------------\n";
+    details += "Total: ₹" + Number(bill.total).toFixed(2) + "\n";
+    details += "Payment: " + bill.paymentType;
+
+    alert(details);
+};
+
+
+window.printBill = function(bill) {
+
+    const rows = bill.items.map(function(item) {
+        return `
+            <tr>
+                <td>${item.product}</td>
+                <td>${item.quantity} ${item.unit || "Piece"}</td>
+                <td>₹${Number(item.price).toFixed(2)}</td>
+                <td>₹${Number(item.amount).toFixed(2)}</td>
+            </tr>
+        `;
+    }).join("");
+
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+        alert("Allow pop-ups in Chrome to print the bill.");
+        return;
+    }
+
+    printWindow.document.write(`
+        <html>
+        <head>
+            <title>Nexora Market Bill</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 28px; color: #171717; }
+                h2, .center { text-align: center; }
+                .brand { border-bottom: 3px solid #d4af37; padding-bottom: 12px; margin-bottom: 18px; }
+                .brand h2 { letter-spacing: 1px; }
+                .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #d7d7d7; padding: 10px; text-align: left; }
+                th { background: #f4f1e7; }
+                .total { text-align: right; font-size: 22px; font-weight: bold; border-top: 2px solid #d4af37; padding-top: 14px; }
+                .payment { text-align: right; color: #444; }
+                .thanks { border-top: 1px solid #d4af37; padding-top: 14px; margin-top: 24px; }
+            </style>
+        </head>
+        <body>
+            <div class="brand">
+                <h2>NEXORA MARKET</h2>
+                <p class="center">Retail Management System</p>
+            </div>
+            <div class="meta">
+                <p><strong>Bill ID:</strong> ${bill.billID}</p>
+                <p><strong>Date:</strong> ${bill.date}</p>
+                <p><strong>Customer:</strong> ${bill.customer}</p>
+                <p><strong>Mobile:</strong> ${bill.mobile || "N/A"}</p>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                </tr>
+                ${rows}
+            </table>
+
+            <p class="total">
+                Total: ₹${Number(bill.total).toFixed(2)}
+            </p>
+
+            <p class="payment"><strong>Payment Method:</strong> ${bill.paymentMethod || "N/A"}</p>
+            <p class="payment"><strong>Payment Status:</strong> ${bill.paymentType || "N/A"}</p>
+            <p class="center thanks">Thank you for shopping with us!</p>
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.print();
+
+};
+
+    </script>
+
+
+</body>
+
+</html>

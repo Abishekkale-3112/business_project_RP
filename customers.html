@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Customers - ABHI'S MARKET</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 18px 35px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .back-btn {
+            background: #38bdf8;
+            color: white;
+            text-decoration: none;
+
+            padding: 10px 18px;
+            border-radius: 7px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .box h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+            padding: 11px;
+
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .register-btn {
+
+            margin-top: 20px;
+
+            background: #0284c7;
+            color: white;
+
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .register-btn:hover {
+            background: #0369a1;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+
+            padding: 13px;
+
+            border-bottom:
+                1px solid #e2e8f0;
+
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        .view-btn {
+
+            background: #0284c7;
+            color: white;
+
+            border: none;
+
+            padding: 7px 12px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .delete-btn {
+
+            background: #ef4444;
+            color: white;
+
+            border: none;
+
+            padding: 7px 12px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            margin-left: 5px;
+        }
+
+        .empty {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #64748b;
+        }
+
+        .history {
+
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        ABHI'S <span>MARKET</span>
+
+    </div>
+
+    <a href="index.html"
+       class="back-btn">
+
+        ← Dashboard
+
+    </a>
+
+</header>
+
+
+<div class="container">
+
+
+    <h1>
+        Customer Management
+    </h1>
+
+    <p class="subtitle">
+        Register customers and maintain their purchase history.
+    </p>
+
+
+    <!-- CUSTOMER REGISTRATION -->
+
+    <div class="box">
+
+        <h2>
+            Register Customer
+        </h2>
+
+
+        <form id="customerForm">
+
+
+            <div class="form-grid">
+
+
+                <div>
+
+                    <label>
+                        Customer Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter customer name"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Mobile Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerMobile"
+                        placeholder="Enter 10 digit mobile number"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customerEmail"
+                        placeholder="Enter email"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Customer Type
+                    </label>
+
+                    <select id="customerType">
+
+                        <option value="Regular">
+                            Regular
+                        </option>
+
+                        <option value="Wholesale">
+                            Wholesale
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Credit Limit
+                    </label>
+
+                    <input
+                        type="number"
+                        id="creditLimit"
+                        min="0"
+                        value="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Address
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        placeholder="Enter customer address"
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-btn">
+
+                Register Customer
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- CUSTOMER LIST -->
+
+    <div class="box">
+
+        <h2>
+            Registered Customers
+        </h2>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Customer ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Mobile
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Total Purchase
+                        </th>
+
+                        <th>
+                            Pay Later
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="customerTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- PURCHASE HISTORY -->
+
+    <div
+        class="box history"
+        id="historyBox">
+
+        <h2 id="historyTitle">
+            Purchase History
+        </h2>
+
+        <div id="historyContent">
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+// ========================================
+// GET CUSTOMERS
+// ========================================
+
+function getCustomers() {
+
+    return JSON.parse(
+        localStorage.getItem("customers")
+    ) || [];
+
+}
+
+
+// ========================================
+// GET BILLS
+// ========================================
+
+function getBills() {
+
+    return JSON.parse(
+        localStorage.getItem("bills")
+    ) || [];
+
+}
+
+
+// ========================================
+// DISPLAY CUSTOMERS
+// ========================================
+
+function loadCustomers() {
+
+    const customers = getCustomers();
+
+    const bills = getBills();
+
+    const table =
+        document.getElementById(
+            "customerTable"
+        );
+
+
+    table.innerHTML = "";
+
+
+    if (customers.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty">
+
+                    No customers registered yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    customers.forEach(function(customer) {
+
+
+        const customerBills =
+            bills.filter(function(bill) {
+
+                return (
+                    bill.customer ===
+                    customer.name
+                );
+
+            });
+
+
+        let totalPurchase = 0;
+
+        let payLater = 0;
+
+
+        customerBills.forEach(
+            function(bill) {
+
+                totalPurchase +=
+                    Number(
+                        bill.total || 0
+                    );
+
+
+                if (
+                    bill.paymentType ===
+                    "Pay Later"
+                ) {
+
+                    payLater +=
+                        Number(
+                            bill.total || 0
+                        );
+
+                }
+
+            }
+        );
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${customer.customerID}
+            </td>
+
+            <td>
+                <strong>
+                    ${customer.name}
+                </strong>
+            </td>
+
+            <td>
+                ${customer.mobile}
+            </td>
+
+            <td>
+                ${customer.customerType}
+            </td>
+
+            <td>
+                ₹${totalPurchase.toFixed(2)}
+            </td>
+
+            <td>
+                ₹${payLater.toFixed(2)}
+            </td>
+
+            <td>
+
+                <button
+                    class="view-btn"
+                    onclick="viewHistory(
+                        '${customer.customerID}'
+                    )">
+
+                    View
+
+                </button>
+
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteCustomer(
+                        '${customer.customerID}'
+                    )">
+
+                    Delete
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+// ========================================
+// REGISTER CUSTOMER
+// ========================================
+
+document
+    .getElementById("customerForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                .getElementById(
+                    "customerName"
+                )
+                .value
+                .trim();
+
+
+            const mobile =
+                document
+                .getElementById(
+                    "customerMobile"
+                )
+                .value
+                .trim();
+
+
+            const email =
+                document
+                .getElementById(
+                    "customerEmail"
+                )
+                .value
+                .trim();
+
+
+            const type =
+                document
+                .getElementById(
+                    "customerType"
+                )
+                .value;
+
+
+            const credit =
+                Number(
+                    document
+                    .getElementById(
+                        "creditLimit"
+                    )
+                    .value || 0
+                );
+
+
+            const address =
+                document
+                .getElementById(
+                    "customerAddress"
+                )
+                .value
+                .trim();
+
+
+            // Mobile validation
+
+            if (
+                !/^[0-9]{10}$/.test(
+                    mobile
+                )
+            ) {
+
+                alert(
+                    "Enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            let customers =
+                getCustomers();
+
+
+            // Check duplicate
+
+            const existing =
+                customers.find(
+                    function(customer) {
+
+                        return (
+                            customer.mobile ===
+                            mobile
+                        );
+
+                    }
+                );
+
+
+            if (existing) {
+
+                alert(
+                    "This customer is already registered."
+                );
+
+                return;
+
+            }
+
+
+            // Create ID
+
+            const customerID =
+                "C" +
+                String(
+                    customers.length + 1
+                )
+                .padStart(
+                    4,
+                    "0"
+                );
+
+
+            // Save customer
+
+            customers.push({
+
+                customerID:
+                    customerID,
+
+                name:
+                    name,
+
+                mobile:
+                    mobile,
+
+                email:
+                    email,
+
+                customerType:
+                    type,
+
+                creditLimit:
+                    credit,
+
+                address:
+                    address,
+
+                dateRegistered:
+                    new Date()
+                    .toLocaleString(
+                        "en-IN"
+                    )
+
+            });
+
+
+            localStorage.setItem(
+
+                "customers",
+
+                JSON.stringify(
+                    customers
+                )
+
+            );
+
+            // =====================================================
+// SAVE CUSTOMER TO JAVA BACKEND / EXCEL
+// =====================================================
+
+fetch("http://localhost:8080/api/customers", {
+
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+        customerId: newCustomer.customerID,
+
+        name: newCustomer.name,
+
+        mobile: newCustomer.mobile || "",
+
+        email: newCustomer.email || "",
+
+        type: newCustomer.type || "Regular",
+
+        creditLimit: newCustomer.creditLimit || "0",
+
+        address: newCustomer.address || ""
+
+    })
+
+})
+
+.then(response => response.json())
+
+.then(data => {
+
+    console.log("Java Backend:", data);
+
+    if (data.success) {
+
+        console.log(
+            "Customer successfully saved to Customers.xlsx"
+        );
+
+    } else {
+
+        console.error(
+            "Excel storage failed:",
+            data.message
+        );
+
+    }
+
+})
+
+.catch(error => {
+
+    console.error(
+        "Java backend is not connected:",
+        error
+    );
+
+});
+
+
+            alert(
+
+                "Customer registered successfully!\n\n" +
+
+                "Customer ID: " +
+                customerID +
+                "\n" +
+
+                "Name: " +
+                name
+
+            );
+
+
+            document
+                .getElementById(
+                    "customerForm"
+                )
+                .reset();
+
+
+            loadCustomers();
+
+        }
+    );
+
+
+// ========================================
+// VIEW CUSTOMER HISTORY
+// ========================================
+
+function viewHistory(customerID) {
+
+    const customers =
+        getCustomers();
+
+    const bills =
+        getBills();
+
+
+    const customer =
+        customers.find(
+            function(c) {
+
+                return (
+                    c.customerID ===
+                    customerID
+                );
+
+            }
+        );
+
+
+    if (!customer) {
+
+        alert(
+            "Customer not found."
+        );
+
+        return;
+
+    }
+
+
+    const customerBills =
+        bills.filter(
+            function(bill) {
+
+                return (
+                    bill.customer ===
+                    customer.name
+                );
+
+            }
+        );
+
+
+    document.getElementById(
+        "historyTitle"
+    ).innerText =
+        customer.name +
+        " - Purchase History";
+
+
+    const content =
+        document.getElementById(
+            "historyContent"
+        );
+
+
+    content.innerHTML = "";
+
+
+    if (
+        customerBills.length ===
+        0
+    ) {
+
+        content.innerHTML = `
+
+            <p class="empty">
+                No purchases yet.
+            </p>
+
+        `;
+
+    } else {
+
+
+        customerBills.forEach(
+            function(bill) {
+
+
+                let items = "";
+
+
+                (bill.items || [])
+                    .forEach(
+                        function(item) {
+
+                            items += `
+
+                                <li>
+
+                                    ${item.product}
+
+                                    -
+
+                                    ${item.quantity}
+                                    ${item.unit || "Piece"}
+
+                                    × ₹${Number(
+                                        item.price || 0
+                                    ).toFixed(2)}
+
+                                </li>
+
+                            `;
+
+                        }
+                    );
+
+
+                content.innerHTML += `
+
+                    <div
+                        style="
+                        padding:15px;
+                        border-bottom:
+                        1px solid #ddd;
+                        ">
+
+                        <p>
+                            <strong>
+                                Bill:
+                            </strong>
+
+                            ${bill.billID}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Date:
+                            </strong>
+
+                            ${bill.date}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Items:
+                            </strong>
+                        </p>
+
+                        <ul>
+                            ${items}
+                        </ul>
+
+                        <p>
+
+                            <strong>
+                                Total:
+                            </strong>
+
+                            ₹${Number(
+                                bill.total || 0
+                            ).toFixed(2)}
+
+                        </p>
+
+                        <p>
+
+                            <strong>
+                                Payment:
+                            </strong>
+
+                            ${bill.paymentType || "-"}
+
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    const historyBox =
+        document.getElementById(
+            "historyBox"
+        );
+
+
+    historyBox.style.display =
+        "block";
+
+
+    historyBox.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+// ========================================
+// DELETE CUSTOMER
+// ========================================
+
+function deleteCustomer(customerID) {
+
+    if (
+        !confirm(
+            "Are you sure you want to delete this customer?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    let customers =
+        getCustomers();
+
+
+    customers =
+        customers.filter(
+            function(customer) {
+
+                return (
+                    customer.customerID !==
+                    customerID
+                );
+
+            }
+        );
+
+
+    localStorage.setItem(
+
+        "customers",
+
+        JSON.stringify(
+            customers
+        )
+
+    );
+
+
+    loadCustomers();
+
+}
+
+
+// ========================================
+// START
+// ========================================
+
+loadCustomers();
+
+
+</script>
+
+</body>
+
+</html>

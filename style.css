@@ -1,0 +1,774 @@
+/* =========================
+   ABHI'S MARKET
+   MAIN WEBSITE STYLE
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVIGATION BAR
+   ========================= */
+
+header {
+    background: #0f172a;
+    color: white;
+    padding: 15px 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+
+/* =========================
+   NAVIGATION LINKS
+   ========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 8px 4px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+
+/* =========================
+   HOME / HERO SECTION
+   ========================= */
+
+.hero {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1d4ed8
+        );
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero h1 span {
+    color: #38bdf8;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 750px;
+    margin: auto;
+    color: #e2e8f0;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 13px 26px;
+
+    margin: 25px 8px 0;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: none;
+
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-primary:hover {
+    background: #7dd3fc;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #0f172a;
+}
+
+
+/* =========================
+   GENERAL SECTION
+   ========================= */
+
+.container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 70px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: 34px;
+
+    color: #0f172a;
+
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: #2563eb;
+}
+
+
+/* =========================
+   FEATURE CARDS
+   ========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.card {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.07);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #0f172a;
+
+    margin-bottom: 10px;
+
+    font-size: 20px;
+}
+
+.card p {
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   DASHBOARD
+   ========================= */
+
+.dashboard-section {
+    background: #eef2ff;
+}
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.07);
+}
+
+.stat-card h4 {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+.stat-card h2 {
+    color: #0f172a;
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   ANALYTICS
+   ========================= */
+
+.analytics-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.analytics-card {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.07);
+}
+
+.analytics-card h3 {
+    color: #0f172a;
+
+    margin-bottom: 15px;
+
+    font-size: 22px;
+}
+
+.analytics-card p {
+    color: #64748b;
+}
+
+
+/* =========================
+   HIGHLIGHT BOX
+   ========================= */
+
+.highlight {
+    background: #e0f2fe;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    border-left: 5px solid #0284c7;
+}
+
+.highlight strong {
+    color: #0f172a;
+}
+
+
+/* =========================
+   MARKET BASKET
+   ========================= */
+
+.market-basket {
+    background: white;
+}
+
+.basket-box {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.product-pair {
+    background: #f8fafc;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    border: 1px solid #e2e8f0;
+}
+
+.product-pair h3 {
+    color: #0f172a;
+
+    margin-bottom: 10px;
+}
+
+.confidence {
+    color: #2563eb;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.06);
+}
+
+th,
+td {
+    padding: 16px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #0f172a;
+
+    color: white;
+}
+
+td {
+    color: #475569;
+}
+
+tr:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================
+   NOTIFICATIONS
+   ========================= */
+
+.notifications {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.notification {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    border-left: 5px solid #2563eb;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.06);
+}
+
+.notification h3 {
+    margin-bottom: 8px;
+
+    color: #0f172a;
+}
+
+.notification p {
+    color: #64748b;
+}
+
+
+/* =========================
+   CTA SECTION
+   ========================= */
+
+.cta {
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1d4ed8
+        );
+
+    color: white;
+
+    padding: 80px 20px;
+}
+
+.cta h2 {
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.cta p {
+    color: #dbeafe;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background: #020617;
+
+    color: #cbd5e1;
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    font-size: 14px;
+}
+
+footer strong {
+    color: white;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+
+@media (max-width: 1100px) {
+
+    header {
+        padding: 18px 25px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .basket-box {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .basket-box {
+        grid-template-columns: 1fr;
+    }
+
+    .notifications {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .container {
+        padding: 50px 18px;
+    }
+}
+
+
+/* ==========================================
+   NEXORA MARKET - MARKET BASKET DASHBOARD
+========================================== */
+
+.market-basket-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.market-basket-controls label {
+    font-weight: 600;
+    color: #334155;
+}
+
+.market-basket-controls input {
+    width: 90px;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.market-basket-controls input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.market-basket-controls button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.market-basket-controls button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* RESULTS GRID */
+
+.basket-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+/* ASSOCIATION RULE CARD */
+
+.product-pair {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 22px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: 0.3s;
+}
+
+.product-pair:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: #93c5fd;
+}
+
+.product-pair h3 {
+    color: #1e293b;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.product-pair p {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* METRIC BADGES */
+
+.product-pair .confidence {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 8px 12px;
+    margin: 5px 5px 0 0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* RESULTS HEADING */
+
+#marketBasketResults > h3 {
+    color: #0f172a;
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .market-basket-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .market-basket-controls input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .market-basket-controls button {
+        width: 100%;
+    }
+
+    .basket-results-grid {
+        grid-template-columns: 1fr;
+    }
+}
